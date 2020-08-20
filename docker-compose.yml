@@ -1,20 +1,26 @@
+version: '3'
 
 services: 
-    web:
+    pokenode:
         build: . 
         depends_on:
-            - db
+            - data
         ports:
-            - "3000:3000"
+            - "3001:3001"
         volumes:
-            - .:/opt/app
-    
-    db:
+            - .:/opt/app  
+    data:
         image: mongo
         expose: 
             - "27017"
+        ports:
+            - "27017:27017"
         volumes:
             - mongodata:/data/db
         
+volumes:
+    mongodata:
+
+
     
     
