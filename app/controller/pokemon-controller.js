@@ -1,5 +1,6 @@
 const services = require('../services/pokemon-services');
 
+
 async function getPokemon(req, res) {
 
     const name = req.params.name;
@@ -8,13 +9,13 @@ async function getPokemon(req, res) {
         throw 'Missing pokemon name.';
     }
 
-    services.getPokemon(name).then((result) => {
-        res.status(200).json(result);
+   services.getPokemon(name).then((result) => {
+        console.log(result.data);
+        res.status(200).send(result.data);
 
     }).catch((error) => {
         res.status(500).send(`Error: ${error}`);
     });
-
 }
 
 async function savePokemon(req, res) {
@@ -26,7 +27,7 @@ async function savePokemon(req, res) {
     }
 
     services.getTypePokemon(type).then((result) => {
-          res.status(200).json(result); 
+        res.status(200).send(result.data);
 
     }).catch((error) => {
         res.status(500).send(`Error: ${error}`);

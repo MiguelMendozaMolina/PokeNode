@@ -8,57 +8,39 @@ const axios = require('axios');
 // comun 
 //https://pokeapi.co/api/v2/
 
-const getPokemon = (name) => {
-    axios
-        .get(`https://pokeapi.co/api/v2/pokemon/${name}`)
-        .then(res => {
-            console.log(res);
-    })
-    .catch(err => {
-        console.log(err);
-    })
-}
 
-const getTypePokemon = (type) => {
-    axios
-        .get(`https://pokeapi.co/api/v2/type/${type}`)
-        .then(res => {
-            console.log(res);
-        })
-        .catch(err => {
-            console.log(err);
-        })
-}
+async function getPokemon(name) {
 
-/* async function getPokemon(name) {
     const config = {
         method: 'get',
-        url:`https://pokeapi.co/api/v2/pokemon/${name}`
+        url: `https://pokeapi.co/api/v2/pokemon/${name}`
     }
 
-    let res = await axios(config)
-    console.log(res); */
-
-
-   /*  try {
-      const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${nombre}`);
-      console.log(response);
+    try {
+        let response = await axios(config)
+        return response;
     } catch (error) {
-      console.error(error);
-    } */
- /*  } */
+        console.error(error);
+    }
+} 
 
-  //async function postPokemon(type) {
-      
-   /*  try {
-      const response = await axios.post(`https://pokeapi.co/api/v2/pokemon/${tipo}`);
-      console.log(response);
+
+async function getTypePokemon(type) {
+
+    const config = {
+        method: 'get',
+        url: `https://pokeapi.co/api/v2/type/${type}`
+    }
+
+    try {
+        let response = await axios(config)
+        return response;
     } catch (error) {
-      console.error(error);
-    } */
-  //}
+        console.error(error);
+    }
+}
 
-  module.exports = {
-      getPokemon,
-      getTypePokemon
-  }
+module.exports = {
+    getPokemon,
+    getTypePokemon
+}
