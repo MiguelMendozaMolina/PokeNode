@@ -2,7 +2,7 @@ const services = require('../services/pokemon-services');
 
 async function getPokemon(req, res) {
 
-    const name = req.name;
+    const name = req.params.name;
 
     if (!name) {
         throw 'Missing pokemon name.';

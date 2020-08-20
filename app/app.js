@@ -1,6 +1,6 @@
 const express = require("express");
 const bodyParser = require ("body-parser");
-const pokemon = require('/routes/pokemon-route');
+const pokemon = require('./routes/pokemon-route');
 const app = express();
 
 // parse application/x-www-form-urlencoded
