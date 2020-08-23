@@ -1,5 +1,5 @@
 const DB_NAME = 'pokenode';
-const DB_COLLECTION = 'test'; 
+const DB_COLLECTION = 'pokecollection'; 
 const DB_URL = 'mongodb://localhost:27017';
 
 module.exports = {

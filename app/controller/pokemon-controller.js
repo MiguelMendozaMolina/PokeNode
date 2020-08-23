@@ -36,15 +36,10 @@ async function savePokemon(req, res) {
 
         services.getTypePokemon(type).then((result) => {
 
-
-            console.log(result); 
-            //receiving data in here! making object to save in mongo :) 
-            // let obj = { data : result.data.pokemon };
-
-            // db.collection(constants.DB_COLLECTION).insertOne(obj, function (err, res) {
-            //     if (err) throw err;
-            //     console.log("1 document inserted");
-            // });
+            db.collection(constants.DB_COLLECTION).insertOne(result, function (err, res) {
+                if (err) throw err;
+                console.log("1 document inserted");
+            });
 
             res.status(200).send(result);  
 
