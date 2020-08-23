@@ -34,19 +34,22 @@ async function savePokemon(req, res) {
 
         const db = client.db(constants.DB_NAME);
 
-        services.getTypePokemon(type).then((result) => {
+        services.getTypePokemon(type).then(async (result) => {
 
-            db.collection(constants.DB_COLLECTION).insertOne(result, function (err, res) {
-                if (err) throw err;
-                console.log("1 document inserted");
-            });
+            let pokemon = await db.collection(constants.DB_COLLECTION).insertOne(result); 
 
-            res.status(200).send(result);  
+            let response = {
+                id: pokemon.insertedId,
+                type: result.type,
+                pokemons: result.pokemons
+            }
+
+            res.status(200).send(response);
 
         }).catch((error) => {
             res.status(500).send(`Error: ${error}`);
         });
-    }); 
+    });
 }
 
 module.exports = {
