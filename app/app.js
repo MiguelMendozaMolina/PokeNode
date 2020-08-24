@@ -11,6 +11,8 @@ app.use(bodyParser.json())
 
 app.use('/pokemon', pokemon);
 
-app.listen(3000, () => {
- console.log("El servidor está inicializado en el puerto 3000");
+const server = app.listen(3000, () => {
+ //console.log("El servidor está inicializado en el puerto 3000");
 });
+
+module.exports = server;
